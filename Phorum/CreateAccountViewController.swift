@@ -28,11 +28,8 @@ class CreateAccountViewController: UIViewController {
         let displayName = displayNameTxtField.text!
         assert(self.userId != "", "User id was not set")
         
-        let usersRef = FIRDatabase.database().reference(withPath: "users")
-        let createUserRef = usersRef.child(self.userId)
-        
-        let createdAccount = AccountModel(displayName: displayName)
-        createdAccount.store(firebaseEle: createUserRef)
+        let createdAccount = AccountModel(displayName: displayName, userId: self.userId)
+        createdAccount.save()
         
         self.performSegue(withIdentifier: CreateAccountViewController.SHOW_MAIN_SEGUE, sender: nil)
     }

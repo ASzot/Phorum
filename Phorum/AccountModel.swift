@@ -9,14 +9,34 @@
 import Foundation
 import Firebase
 
-class AccountModel {
+class AccountModel:BaseModel {
+    static let TABLE_NAME = "users"
     var displayName: String
+    var userId: String
     
-    init(displayName: String) {
+    init(displayName: String, userId: String) {
         self.displayName = displayName
+        self.userId = userId
     }
     
-    func store(firebaseEle:FIRDatabaseReference) {
-        firebaseEle.child("display").setValue(self.displayName)
+    
+    static func getFirebaseRef() -> FIRDatabaseReference {
+        return FIRDatabase.database().reference(withPath: AccountModel.TABLE_NAME)
+    }
+    
+    func save() {
+        let newEle = AccountModel.get(id: userId)
+        newEle.child("display").setValue(self.displayName)
+    }
+    
+    static func get(id:String) -> FIRDatabaseReference {
+        return AccountModel.getFirebaseRef().child(id)
+    }
+    
+    static func getAll() {
+        let ref = AccountModel.getFirebaseRef()
+        ref.observe(.value, with: { snapshot in
+            print(snapshot.value)
+        })
     }
 }
