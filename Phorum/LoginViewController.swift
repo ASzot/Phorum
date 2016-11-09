@@ -21,6 +21,7 @@ class LoginViewController: UIViewController {
         
         let digits = Digits.sharedInstance()
         if let session = digits.session() {
+            print("The user id is " + session.userID)
             // The session already exists. The user is logged in.
             checkUserExists(userId: session.userID)
         }
@@ -48,9 +49,8 @@ class LoginViewController: UIViewController {
     }
     
     func checkUserExists(userId: String) {
-        let userRef = FIRDatabase.database().reference(withPath: "users")
-        userRef.queryEqual(toValue:userId).observe(.value, with: { snapshot in
-            if (snapshot.value is NSNull) {
+        AccountModel.getFirebaseRef().child(userId).observe(.value, with: { snapshot in
+            if (snapshot.value as? NSDictionary) != nil {
                 // Navigate to the account creation view.
                 self.loggedInUserId = userId
                 self.performSegue(withIdentifier: LoginViewController.SHOW_CREATE_ACCOUNT_SEGUE_ID, sender: nil)

@@ -21,22 +21,28 @@ class AccountModel:BaseModel {
     
     
     static func getFirebaseRef() -> FIRDatabaseReference {
-        return FIRDatabase.database().reference(withPath: AccountModel.TABLE_NAME)
+        return FIRDatabase.database().reference(withPath: EventModel.TABLE_NAME)
+    }
+    
+    static func get(id:String, onComplete: @escaping (Any?) -> ()) -> () {
+        ModelHelper.getResults(firebaseRef: AccountModel.getFirebaseRef(), id: id) { (accountData) -> Void in
+            // Convert the object to an AccountModel
+            if let account = accountData {
+                let display = account["display"] as! String
+                onComplete(AccountModel(displayName: display, userId: id))
+            }
+            else {
+                onComplete(nil)
+            }
+        }
+    }
+    
+    static func getAll(onComplete: @escaping (Any?) -> ()) -> () {
+        
     }
     
     func save() {
-        let newEle = AccountModel.get(id: userId)
+        let newEle = EventModel.getFirebaseRef().child(self.userId)
         newEle.child("display").setValue(self.displayName)
-    }
-    
-    static func get(id:String) -> FIRDatabaseReference {
-        return AccountModel.getFirebaseRef().child(id)
-    }
-    
-    static func getAll() {
-        let ref = AccountModel.getFirebaseRef()
-        ref.observe(.value, with: { snapshot in
-            print(snapshot.value)
-        })
     }
 }
