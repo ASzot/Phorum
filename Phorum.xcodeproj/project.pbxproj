@@ -14,6 +14,8 @@
 		6901C5FA1DD18E52006547F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6901C5F91DD18E52006547F9 /* Assets.xcassets */; };
 		6901C5FD1DD18E52006547F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6901C5FB1DD18E52006547F9 /* LaunchScreen.storyboard */; };
 		697075F81DD1E28B00A588F3 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697075F71DD1E28B00A588F3 /* EventModel.swift */; };
+		697768FB1DD2B8B500900185 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697768FA1DD2B8B500900185 /* CreateEventViewController.swift */; };
+		697769001DD2BA0A00900185 /* DefaultResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697768FF1DD2BA0A00900185 /* DefaultResponder.swift */; };
 		69A936211DD1C1F700CF940C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 69A936201DD1C1F700CF940C /* GoogleService-Info.plist */; };
 		69A936251DD1CAAC00CF940C /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A936241DD1CAAC00CF940C /* CreateAccountViewController.swift */; };
 		69A9362C1DD1D41B00CF940C /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A9362B1DD1D41B00CF940C /* AccountModel.swift */; };
@@ -31,6 +33,8 @@
 		6901C5FC1DD18E52006547F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6901C5FE1DD18E52006547F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		697075F71DD1E28B00A588F3 /* EventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		697768FA1DD2B8B500900185 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
+		697768FF1DD2BA0A00900185 /* DefaultResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultResponder.swift; sourceTree = "<group>"; };
 		69A936201DD1C1F700CF940C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		69A936241DD1CAAC00CF940C /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		69A9362B1DD1D41B00CF940C /* AccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
@@ -96,9 +100,18 @@
 			path = Phorum;
 			sourceTree = "<group>";
 		};
+		697769011DD2BA0E00900185 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				697768FF1DD2BA0A00900185 /* DefaultResponder.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 		69A936221DD1C7B700CF940C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				697769011DD2BA0E00900185 /* Common */,
 				69A936311DD1DF8400CF940C /* Events */,
 				69A936231DD1CA8F00CF940C /* Account */,
 			);
@@ -136,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				69A936321DD1DFA300CF940C /* PrivateEventsViewController.swift */,
+				697768FA1DD2B8B500900185 /* CreateEventViewController.swift */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -290,12 +304,14 @@
 			files = (
 				69A936301DD1DC9200CF940C /* BaseModel.swift in Sources */,
 				69A936251DD1CAAC00CF940C /* CreateAccountViewController.swift in Sources */,
+				697769001DD2BA0A00900185 /* DefaultResponder.swift in Sources */,
 				6901C5F51DD18E52006547F9 /* LoginViewController.swift in Sources */,
 				69A936331DD1DFA300CF940C /* PrivateEventsViewController.swift in Sources */,
 				69A9362E1DD1D86100CF940C /* HideKeyboardHelper.swift in Sources */,
 				6901C5F31DD18E52006547F9 /* AppDelegate.swift in Sources */,
 				697075F81DD1E28B00A588F3 /* EventModel.swift in Sources */,
 				69A9362C1DD1D41B00CF940C /* AccountModel.swift in Sources */,
+				697768FB1DD2B8B500900185 /* CreateEventViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

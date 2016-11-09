@@ -21,15 +21,13 @@ class AccountModel:BaseModel {
     
     
     static func getFirebaseRef() -> FIRDatabaseReference {
-        return FIRDatabase.database().reference(withPath: EventModel.TABLE_NAME)
+        return FIRDatabase.database().reference(withPath: AccountModel.TABLE_NAME)
     }
     
     static func get(id:String, onComplete: @escaping (Any?) -> ()) -> () {
         ModelHelper.getResults(firebaseRef: AccountModel.getFirebaseRef(), id: id) { (accountData) -> Void in
             // Convert the object to an AccountModel
             if let account = accountData {
-                print("Valid")
-                print(account)
                 let display = account["display"] as! String
                 onComplete(AccountModel(displayName: display, userId: id))
             }

@@ -14,7 +14,11 @@ class EventModel:BaseModel {
     var eventName: String
     var eventId: String
     
-    init(eventName: String, eventId: String) {
+    convenience init(eventName: String) {
+        self.init(eventName: eventName, eventId: "")
+    }
+    
+    init (eventName: String, eventId: String) {
         self.eventName = eventName
         self.eventId = eventId
     }
@@ -41,7 +45,7 @@ class EventModel:BaseModel {
     }
     
     func save() {
-        let newEle = EventModel.getFirebaseRef().child(eventId)
+        let newEle = self.eventId == "" ? EventModel.getFirebaseRef().childByAutoId() : EventModel.getFirebaseRef().child(self.eventId)
         newEle.child("name").setValue(self.eventName)
     }
 }

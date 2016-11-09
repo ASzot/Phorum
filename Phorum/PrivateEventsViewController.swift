@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DefaultResponder  {
     @IBOutlet weak var displayTableView: UITableView!
     var allPrivateEvents: [EventModel] = []
 
@@ -23,7 +23,21 @@ class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITabl
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let createEventVC = segue.destination as? CreateEventViewController {
+            createEventVC.delegate = self
+        }
+    }
     
+    func onDone(senderType: Any.Type, data: Any?) {
+        self.dismiss(animated: true, completion: {});
+        
+        // Update events.
+    }
+    
+    func onCancel(senderType: Any.Type) {
+        self.dismiss(animated: true, completion: {});
+    }
     
     public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
