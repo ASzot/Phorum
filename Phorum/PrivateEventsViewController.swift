@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DigitsKit
 
 class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DefaultResponder  {
     @IBOutlet weak var displayTableView: UITableView!
@@ -16,6 +17,7 @@ class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
 
         
+        let userId = Digits.sharedInstance().session().userID
     }
 
     override func didReceiveMemoryWarning() {

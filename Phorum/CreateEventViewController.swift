@@ -16,8 +16,11 @@ class CreateEventViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.hideKeyboardWhenTappedAround()
         self.setErrorMsg(errorTxt: "")
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

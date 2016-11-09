@@ -42,7 +42,7 @@ class AccountModel:BaseModel {
     }
     
     func save() {
-        let newEle = EventModel.getFirebaseRef().child(self.userId)
+        let newEle = AccountModel.getFirebaseRef().child(self.userId)
         newEle.child("display").setValue(self.displayName)
     }
 }
