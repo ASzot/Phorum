@@ -21,7 +21,8 @@ protocol BaseModel {
 class ModelHelper {
     static func getResults(firebaseRef: FIRDatabaseReference, id: String, onComplete: @escaping (NSDictionary?) -> ()) {
         firebaseRef.child(id).observe(.value, with: { snapshot in
-            if let event = snapshot.value as! NSDictionary? {
+            if let event = snapshot.value as? NSDictionary {
+                print(event)
                 onComplete(event)
             }
             else {

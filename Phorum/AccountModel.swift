@@ -28,6 +28,8 @@ class AccountModel:BaseModel {
         ModelHelper.getResults(firebaseRef: AccountModel.getFirebaseRef(), id: id) { (accountData) -> Void in
             // Convert the object to an AccountModel
             if let account = accountData {
+                print("Valid")
+                print(account)
                 let display = account["display"] as! String
                 onComplete(AccountModel(displayName: display, userId: id))
             }

@@ -49,8 +49,8 @@ class LoginViewController: UIViewController {
     }
     
     func checkUserExists(userId: String) {
-        AccountModel.getFirebaseRef().child(userId).observe(.value, with: { snapshot in
-            if (snapshot.value as? NSDictionary) != nil {
+        AccountModel.get(id: userId) { (userAccount) -> Void in
+            if userAccount == nil {
                 // Navigate to the account creation view.
                 self.loggedInUserId = userId
                 self.performSegue(withIdentifier: LoginViewController.SHOW_CREATE_ACCOUNT_SEGUE_ID, sender: nil)
@@ -59,7 +59,7 @@ class LoginViewController: UIViewController {
                 // Navigate to the main view.
                 self.performSegue(withIdentifier: LoginViewController.SHOW_MAIN_SEGUE_ID, sender: nil)
             }
-        })
+        }
     }
 
     override func didReceiveMemoryWarning() {
