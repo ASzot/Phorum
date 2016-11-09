@@ -12,12 +12,16 @@ import DigitsKit
 class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DefaultResponder  {
     @IBOutlet weak var displayTableView: UITableView!
     var allPrivateEvents: [EventModel] = []
+    var userId: String? = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.userId = Digits.sharedInstance().session()?.userID
+    }
+    
+    func fetchEvents() {
         
-        let userId = Digits.sharedInstance().session().userID
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,6 +32,7 @@ class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITabl
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let createEventVC = segue.destination as? CreateEventViewController {
             createEventVC.delegate = self
+            createEventVC.userId = self.userId
         }
     }
     

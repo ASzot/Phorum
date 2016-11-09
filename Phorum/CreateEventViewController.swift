@@ -10,6 +10,7 @@ import UIKit
 
 class CreateEventViewController: UIViewController {
     var delegate:DefaultResponder? = nil
+    var userId: String? = ""
     @IBOutlet weak var eventNameTxtField: UITextField!
     @IBOutlet weak var errorMsgLbl: UILabel!
     
@@ -17,10 +18,10 @@ class CreateEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        assert(self.userId != "", "User id was not set")
+        
         self.hideKeyboardWhenTappedAround()
         self.setErrorMsg(errorTxt: "")
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,7 +34,7 @@ class CreateEventViewController: UIViewController {
         let validateInputResult = validateInput(eventName: eventName)
         
         if validateInputResult == "Valid" {
-            let createEvent = EventModel(eventName: eventName)
+            let createEvent = EventModel(eventName: eventName, creatorId: self.userId!)
             // Save the event. 
             createEvent.save()
             

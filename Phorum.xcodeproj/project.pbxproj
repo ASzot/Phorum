@@ -16,6 +16,7 @@
 		697075F81DD1E28B00A588F3 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697075F71DD1E28B00A588F3 /* EventModel.swift */; };
 		697768FB1DD2B8B500900185 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697768FA1DD2B8B500900185 /* CreateEventViewController.swift */; };
 		697769001DD2BA0A00900185 /* DefaultResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697768FF1DD2BA0A00900185 /* DefaultResponder.swift */; };
+		697769031DD2E96000900185 /* SubscribedEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697769021DD2E96000900185 /* SubscribedEvents.swift */; };
 		69A936211DD1C1F700CF940C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 69A936201DD1C1F700CF940C /* GoogleService-Info.plist */; };
 		69A936251DD1CAAC00CF940C /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A936241DD1CAAC00CF940C /* CreateAccountViewController.swift */; };
 		69A9362C1DD1D41B00CF940C /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A9362B1DD1D41B00CF940C /* AccountModel.swift */; };
@@ -35,6 +36,7 @@
 		697075F71DD1E28B00A588F3 /* EventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		697768FA1DD2B8B500900185 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		697768FF1DD2BA0A00900185 /* DefaultResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultResponder.swift; sourceTree = "<group>"; };
+		697769021DD2E96000900185 /* SubscribedEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribedEvents.swift; sourceTree = "<group>"; };
 		69A936201DD1C1F700CF940C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		69A936241DD1CAAC00CF940C /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		69A9362B1DD1D41B00CF940C /* AccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				69A9362B1DD1D41B00CF940C /* AccountModel.swift */,
 				69A9362F1DD1DC9200CF940C /* BaseModel.swift */,
 				697075F71DD1E28B00A588F3 /* EventModel.swift */,
+				697769021DD2E96000900185 /* SubscribedEvents.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69A936301DD1DC9200CF940C /* BaseModel.swift in Sources */,
+				697769031DD2E96000900185 /* SubscribedEvents.swift in Sources */,
 				69A936251DD1CAAC00CF940C /* CreateAccountViewController.swift in Sources */,
 				697769001DD2BA0A00900185 /* DefaultResponder.swift in Sources */,
 				6901C5F51DD18E52006547F9 /* LoginViewController.swift in Sources */,

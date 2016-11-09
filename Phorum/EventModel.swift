@@ -13,14 +13,16 @@ class EventModel:BaseModel {
     static let TABLE_NAME = "events"
     var eventName: String
     var eventId: String
+    var creatorId: String
     
-    convenience init(eventName: String) {
-        self.init(eventName: eventName, eventId: "")
+    convenience init(eventName: String, creatorId: String) {
+        self.init(eventName: eventName, creatorId: creatorId, eventId: "")
     }
     
-    init (eventName: String, eventId: String) {
+    init (eventName: String, creatorId: String, eventId: String) {
         self.eventName = eventName
         self.eventId = eventId
+        self.creatorId = creatorId
     }
     
     static func getFirebaseRef() -> FIRDatabaseReference {
@@ -32,7 +34,8 @@ class EventModel:BaseModel {
             // Convert the object to an AccountModel
             if let event = eventData {
                 let name = event["name"] as! String
-                onComplete(EventModel(eventName: name, eventId: id))
+                let creatorId = event["creator_id"] as! String
+                onComplete(EventModel(eventName: name, creatorId: creatorId, eventId: id))
             }
             else {
                 onComplete(nil)
@@ -47,5 +50,6 @@ class EventModel:BaseModel {
     func save() {
         let newEle = self.eventId == "" ? EventModel.getFirebaseRef().childByAutoId() : EventModel.getFirebaseRef().child(self.eventId)
         newEle.child("name").setValue(self.eventName)
+        newEle.child("creator_id").setValue(self.creatorId)
     }
 }

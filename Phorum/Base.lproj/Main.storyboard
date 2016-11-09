@@ -30,7 +30,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1199" y="472"/>
+            <point key="canvasLocation" x="486" y="437"/>
         </scene>
         <!--Public-->
         <scene sceneID="mwg-SE-c3c">
@@ -47,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfd-fj-Q0T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2714" y="1026"/>
+            <point key="canvasLocation" x="2310" y="1075"/>
         </scene>
         <!--My Spaces-->
         <scene sceneID="lMr-dG-Lxy">
@@ -142,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nza-VE-CNi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5016.8000000000002" y="-183.05847076461771"/>
+            <point key="canvasLocation" x="5263" y="71"/>
         </scene>
         <!--Private-->
         <scene sceneID="7UL-VN-ice">
@@ -179,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1AD-q3-cIe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3261.5999999999999" y="-183.05847076461771"/>
+            <point key="canvasLocation" x="3889" y="-183"/>
         </scene>
         <!--Create Account View Controller-->
         <scene sceneID="UDJ-Nn-sQZ">
@@ -264,7 +264,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SX7-sY-03P"/>
+        <segue reference="WNa-82-WKB"/>
         <segue reference="j8U-2X-hVC"/>
     </inferredMetricsTieBreakers>
 </document>
