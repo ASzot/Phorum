@@ -22,6 +22,9 @@
 		69A9362E1DD1D86100CF940C /* HideKeyboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A9362D1DD1D86100CF940C /* HideKeyboardHelper.swift */; };
 		69A936301DD1DC9200CF940C /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A9362F1DD1DC9200CF940C /* BaseModel.swift */; };
 		69A936331DD1DFA300CF940C /* PrivateEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A936321DD1DFA300CF940C /* PrivateEventsViewController.swift */; };
+		FF8315361DD358F7003EFDC1 /* ImageCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8315351DD358F7003EFDC1 /* ImageCaptureViewController.swift */; };
+		FFF1EF191DD2E46200803016 /* MainTabsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1EF181DD2E46200803016 /* MainTabsController.swift */; };
+		FFF1EF1C1DD2E66100803016 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1EF1B1DD2E66100803016 /* CameraViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		7A06D6A4D889584BCB7B1ADD /* Pods_Phorum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Phorum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D83E0C0637F3966DD9F54BD /* Pods-Phorum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Phorum.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Phorum/Pods-Phorum.debug.xcconfig"; sourceTree = "<group>"; };
 		CDA085E0100BD6B50F78290F /* Pods-Phorum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Phorum.release.xcconfig"; path = "Pods/Target Support Files/Pods-Phorum/Pods-Phorum.release.xcconfig"; sourceTree = "<group>"; };
+		FF8315351DD358F7003EFDC1 /* ImageCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCaptureViewController.swift; sourceTree = "<group>"; };
+		FFF1EF181DD2E46200803016 /* MainTabsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabsController.swift; sourceTree = "<group>"; };
+		FFF1EF1B1DD2E66100803016 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,7 @@
 		69A936221DD1C7B700CF940C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FFF1EF1A1DD2E47100803016 /* MainController */,
 				697769011DD2BA0E00900185 /* Common */,
 				69A936311DD1DF8400CF940C /* Events */,
 				69A936231DD1CA8F00CF940C /* Account */,
@@ -163,6 +170,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FFF1EF1A1DD2E47100803016 /* MainController */ = {
+			isa = PBXGroup;
+			children = (
+				FF8315351DD358F7003EFDC1 /* ImageCaptureViewController.swift */,
+				FFF1EF181DD2E46200803016 /* MainTabsController.swift */,
+				FFF1EF1B1DD2E66100803016 /* CameraViewController.swift */,
+			);
+			name = MainController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -199,7 +216,7 @@
 				TargetAttributes = {
 					6901C5EE1DD18E52006547F9 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 572QK6T569;
+						DevelopmentTeam = HUSRZ24RF7;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -307,11 +324,14 @@
 				697769001DD2BA0A00900185 /* DefaultResponder.swift in Sources */,
 				6901C5F51DD18E52006547F9 /* LoginViewController.swift in Sources */,
 				69A936331DD1DFA300CF940C /* PrivateEventsViewController.swift in Sources */,
+				FFF1EF1C1DD2E66100803016 /* CameraViewController.swift in Sources */,
+				FF8315361DD358F7003EFDC1 /* ImageCaptureViewController.swift in Sources */,
 				69A9362E1DD1D86100CF940C /* HideKeyboardHelper.swift in Sources */,
 				6901C5F31DD18E52006547F9 /* AppDelegate.swift in Sources */,
 				697075F81DD1E28B00A588F3 /* EventModel.swift in Sources */,
 				69A9362C1DD1D41B00CF940C /* AccountModel.swift in Sources */,
 				697768FB1DD2B8B500900185 /* CreateEventViewController.swift in Sources */,
+				FFF1EF191DD2E46200803016 /* MainTabsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,7 +453,7 @@
 			baseConfigurationReference = 8D83E0C0637F3966DD9F54BD /* Pods-Phorum.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 572QK6T569;
+				DEVELOPMENT_TEAM = HUSRZ24RF7;
 				INFOPLIST_FILE = Phorum/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -448,7 +468,7 @@
 			baseConfigurationReference = CDA085E0100BD6B50F78290F /* Pods-Phorum.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 572QK6T569;
+				DEVELOPMENT_TEAM = HUSRZ24RF7;
 				INFOPLIST_FILE = Phorum/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

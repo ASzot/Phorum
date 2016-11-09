@@ -17,7 +17,7 @@ class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
 
         
-        let userId = Digits.sharedInstance().session().userID
+        let userId = Digits.sharedInstance().session()?.userID
     }
 
     override func didReceiveMemoryWarning() {
