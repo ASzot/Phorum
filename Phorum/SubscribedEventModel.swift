@@ -12,8 +12,8 @@ import Firebase
 
 class SubscribedEventModel:BaseModel {
     let keys = [
-        "eventId",
-        "userId"
+        "event_id",
+        "user_id"
     ]
     
     convenience override init() {
@@ -29,19 +29,19 @@ class SubscribedEventModel:BaseModel {
     
     var eventId:String {
         get {
-            return self.getModelValue(key: "eventId") as! String
+            return self.getModelValue(key: "event_id") as! String
         }
         set(setVal) {
-            self.setModelValue(key: "eventId", setValue: setVal)
+            self.setModelValue(key: "event_id", setValue: setVal)
         }
     }
     
     var userId:String {
         get {
-            return self.getModelValue(key: "userId") as! String
+            return self.getModelValue(key: "user_id") as! String
         }
         set(setVal) {
-            self.setModelValue(key: "userId", setValue: setVal)
+            self.setModelValue(key: "user_id", setValue: setVal)
         }
     }
     

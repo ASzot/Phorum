@@ -22,6 +22,7 @@ class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITabl
         self.displayTableView.dataSource = self
         self.displayTableView.delegate = self
         self.displayTableView.register(nib, forCellReuseIdentifier: PrivateEventsViewController.CELL_REUSE_IDEN)
+        self.displayTableView.rowHeight = 80
 
         self.userId = Digits.sharedInstance().session()?.userID
         

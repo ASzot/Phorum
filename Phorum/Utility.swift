@@ -23,6 +23,9 @@ class UtilityHelper {
             eventCode += UtilityHelper.EVENT_CODE_VALUES[randomIndex]
         }
         
+        print("Event code is")
+        print(eventCode)
+        
         return eventCode
     }
 }

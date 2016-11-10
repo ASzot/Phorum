@@ -13,7 +13,6 @@ class EventModel:BaseModel {
     let keys = [
         "creator_id",
         "name",
-        "event_id",
         "event_code"
     ]
     
@@ -31,6 +30,7 @@ class EventModel:BaseModel {
         self.clearModelValues(forKeys:self.keys)
         self.name = name
         self.creatorId = creatorId
+        self.eventCode = eventCode
     }
     
     var name:String {
@@ -51,9 +51,12 @@ class EventModel:BaseModel {
         }
     }
     
-    var genCode:String {
+    var eventCode:String {
         get {
             return self.getModelValue(key: "event_code") as! String
+        }
+        set(setVal) {
+            self.setModelValue(key: "event_code", setValue:setVal)
         }
     }
     

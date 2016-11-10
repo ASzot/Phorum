@@ -73,7 +73,9 @@ class BaseModel {
         }
         
         for (key, value) in self.getModelValues() {
-            newEle.child(key).setValue(value)
+            if key != "id" {
+                newEle.child(key).setValue(value)
+            }
         }
     }
     
