@@ -17,7 +17,6 @@ class ImageCaptureViewController: UIViewController, UIImagePickerControllerDeleg
         super.viewDidLoad()
         
         configureCamera()
-        self.present(cameraPicker, animated: true, completion: nil)
 
 
         // Do any additional setup after loading the view.
@@ -37,47 +36,24 @@ class ImageCaptureViewController: UIViewController, UIImagePickerControllerDeleg
             cameraPicker.allowsEditing = false
         }
         else{
-            
             print("camera")
         }
-        
-        
-    }
-    override func viewDidAppear(_ animated: Bool) {
-       // self.present(cameraPicker, animated: true, completion: nil)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.present(cameraPicker, animated: true, completion: nil)
+    }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         cameraPicker.dismiss(animated: true, completion: nil)
+        
+        self.tabBarController?.selectedIndex = 0
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        
         let imageToSave : UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
-        var jpegImage = UIImageJPEGRepresentation(imageToSave,1.0)
+        var jpegImage = UIImageJPEGRepresentation(imageToSave, 1.0)
         
         //have to save jpeg image to database
-        
-        
-        
-        
-        
-        
-        
-        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

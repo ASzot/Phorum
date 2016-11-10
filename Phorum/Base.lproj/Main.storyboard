@@ -32,7 +32,7 @@
             </objects>
             <point key="canvasLocation" x="1199" y="472"/>
         </scene>
-        <!--Item-->
+        <!--Camera-->
         <scene sceneID="93d-A4-xWJ">
             <objects>
                 <viewController id="n9s-ob-LeC" customClass="ImageCaptureViewController" customModule="Phorum" customModuleProvider="target" sceneMemberID="viewController">
@@ -51,14 +51,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="7zT-Mu-bsW"/>
+                    <tabBarItem key="tabBarItem" title="Camera" id="7zT-Mu-bsW"/>
                     <connections>
                         <outlet property="picture" destination="hdh-NK-FXJ" id="7lw-dF-JNN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gc-Lh-2eo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1125.5999999999999" y="1164.4677661169417"/>
+            <point key="canvasLocation" x="1815" y="1089"/>
         </scene>
         <!--Public-->
         <scene sceneID="mwg-SE-c3c">
