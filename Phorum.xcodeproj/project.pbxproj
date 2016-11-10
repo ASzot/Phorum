@@ -25,6 +25,8 @@
 		697769151DD4735C00900185 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697769141DD4735C00900185 /* PhotoModel.swift */; };
 		697769171DD4F54700900185 /* EventContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697769161DD4F54700900185 /* EventContentViewController.swift */; };
 		6977691B1DD4F71800900185 /* EventContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6977691A1DD4F71800900185 /* EventContentCollectionViewCell.swift */; };
+		6977691D1DD50D2100900185 /* ImageViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6977691C1DD50D2100900185 /* ImageViewHelper.swift */; };
+		6977691F1DD511CA00900185 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6977691E1DD511CA00900185 /* EventDetailsViewController.swift */; };
 		69A936211DD1C1F700CF940C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 69A936201DD1C1F700CF940C /* GoogleService-Info.plist */; };
 		69A936251DD1CAAC00CF940C /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A936241DD1CAAC00CF940C /* CreateAccountViewController.swift */; };
 		69A9362C1DD1D41B00CF940C /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A9362B1DD1D41B00CF940C /* AccountModel.swift */; };
@@ -60,6 +62,8 @@
 		697769141DD4735C00900185 /* PhotoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		697769161DD4F54700900185 /* EventContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventContentViewController.swift; sourceTree = "<group>"; };
 		6977691A1DD4F71800900185 /* EventContentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventContentCollectionViewCell.swift; sourceTree = "<group>"; };
+		6977691C1DD50D2100900185 /* ImageViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewHelper.swift; sourceTree = "<group>"; };
+		6977691E1DD511CA00900185 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		69A936201DD1C1F700CF940C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		69A936241DD1CAAC00CF940C /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		69A9362B1DD1D41B00CF940C /* AccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 			children = (
 				697769041DD45DF800900185 /* Cell */,
 				69A9362D1DD1D86100CF940C /* HideKeyboardHelper.swift */,
+				6977691C1DD50D2100900185 /* ImageViewHelper.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 				697768FA1DD2B8B500900185 /* CreateEventViewController.swift */,
 				6977690E1DD46F5F00900185 /* EventSelectorViewController.swift */,
 				697769161DD4F54700900185 /* EventContentViewController.swift */,
+				6977691E1DD511CA00900185 /* EventDetailsViewController.swift */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -379,6 +385,7 @@
 				FF83153A1DD4AD4A003EFDC1 /* MySpacesViewController.swift in Sources */,
 				697769031DD2E96000900185 /* SubscribedEventModel.swift in Sources */,
 				69A936251DD1CAAC00CF940C /* CreateAccountViewController.swift in Sources */,
+				6977691D1DD50D2100900185 /* ImageViewHelper.swift in Sources */,
 				697769061DD45E4D00900185 /* EventTableViewCell.swift in Sources */,
 				6977690F1DD46F5F00900185 /* EventSelectorViewController.swift in Sources */,
 				6977691B1DD4F71800900185 /* EventContentCollectionViewCell.swift in Sources */,
@@ -389,6 +396,7 @@
 				FF83153C1DD4AD76003EFDC1 /* PublicSpacesViewController.swift in Sources */,
 				69A936331DD1DFA300CF940C /* PrivateEventsViewController.swift in Sources */,
 				FFF1EF1C1DD2E66100803016 /* CameraViewController.swift in Sources */,
+				6977691F1DD511CA00900185 /* EventDetailsViewController.swift in Sources */,
 				FF8315361DD358F7003EFDC1 /* ImageCaptureViewController.swift in Sources */,
 				69A9362E1DD1D86100CF940C /* HideKeyboardHelper.swift in Sources */,
 				6901C5F31DD18E52006547F9 /* AppDelegate.swift in Sources */,

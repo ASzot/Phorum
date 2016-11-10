@@ -24,6 +24,7 @@ class PhotoModel:BaseModel {
         self.clearModelValues(forKeys:self.keys)
         self.url = url
         self.userId = userId
+        self.eventId = eventId
     }
     
     var eventId:String {
