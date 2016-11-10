@@ -10,4 +10,5 @@ target 'Phorum' do
   pod 'Digits'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Firebase/Storage'
 end

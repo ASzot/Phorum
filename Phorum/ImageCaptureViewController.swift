@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
-class ImageCaptureViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
-
+class ImageCaptureViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate, DefaultResponder {
     @IBOutlet weak var picture: UIImageView!
+    static let EVENT_SELECTOR_STORYBOARD_ID = "EventSelectorVCStoryboardID"
     let cameraPicker = UIImagePickerController()
+    var userId: String?
+    var photoData: Data?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,22 @@ class ImageCaptureViewController: UIViewController, UIImagePickerControllerDeleg
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let eventSelectorVC = segue.destination as? EventSelectorViewController {
+            eventSelectorVC.delegate = self
+            eventSelectorVC.userId = self.userId
+            eventSelectorVC.imageData = self.photoData
+        }
+    }
+    
+    func onDone(senderType: Any.Type, data: Any?) {
+        self.dismiss(animated: true, completion: {});
+    }
+    
+    func onCancel(senderType: Any.Type) {
+        self.dismiss(animated: true, completion: {});
     }
     
     func configureCamera(){
@@ -52,8 +71,14 @@ class ImageCaptureViewController: UIViewController, UIImagePickerControllerDeleg
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let imageToSave : UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
-        var jpegImage = UIImageJPEGRepresentation(imageToSave, 1.0)
-        
-        //have to save jpeg image to database
+        if let imageData = UIImageJPEGRepresentation(imageToSave, 1.0) {
+            self.photoData = imageData
+            
+            let eventSelectorVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ImageCaptureViewController.EVENT_SELECTOR_STORYBOARD_ID)
+            self.present(eventSelectorVC, animated: true, completion: nil)
+        }
+        else {
+            print("Could not convert image to jpeg")
+        }
     }
 }
