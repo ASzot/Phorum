@@ -54,6 +54,7 @@
                     <tabBarItem key="tabBarItem" title="Camera" id="7zT-Mu-bsW"/>
                     <connections>
                         <outlet property="picture" destination="hdh-NK-FXJ" id="7lw-dF-JNN"/>
+                        <segue destination="tpA-FN-1VV" kind="presentation" identifier="CameraViewToEventSelectView" id="RUg-zH-jdN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gc-Lh-2eo" userLabel="First Responder" sceneMemberID="firstResponder"/>

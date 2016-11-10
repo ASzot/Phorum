@@ -8,21 +8,24 @@
 
 import UIKit
 import Firebase
+import DigitsKit
 
 class ImageCaptureViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate, DefaultResponder {
     @IBOutlet weak var picture: UIImageView!
     static let EVENT_SELECTOR_STORYBOARD_ID = "EventSelectorVCStoryboardID"
+    static let TO_EVENT_SELECTOR_SEGUE = "CameraViewToEventSelectView"
     let cameraPicker = UIImagePickerController()
     var userId: String?
-    var photoData: Data?
+    var imageData: Data?
+    var showCamera:Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureCamera()
+        
+        self.userId = Digits.sharedInstance().session()?.userID
 
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,20 +33,22 @@ class ImageCaptureViewController: UIViewController, UIImagePickerControllerDeleg
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let eventSelectorVC = segue.destination as? EventSelectorViewController {
-            eventSelectorVC.delegate = self
-            eventSelectorVC.userId = self.userId
-            eventSelectorVC.imageData = self.photoData
-        }
-    }
-    
     func onDone(senderType: Any.Type, data: Any?) {
+        self.showCamera = true
         self.dismiss(animated: true, completion: {});
     }
     
     func onCancel(senderType: Any.Type) {
+        self.showCamera = true
         self.dismiss(animated: true, completion: {});
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let eventSelectorVC = segue.destination as? EventSelectorViewController {
+            eventSelectorVC.delegate = self
+            eventSelectorVC.userId = self.userId
+            eventSelectorVC.imageData = self.imageData
+        }
     }
     
     func configureCamera(){
@@ -60,7 +65,9 @@ class ImageCaptureViewController: UIViewController, UIImagePickerControllerDeleg
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.present(cameraPicker, animated: true, completion: nil)
+        if self.showCamera {
+            self.present(cameraPicker, animated: true, completion: nil)
+        }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -72,10 +79,11 @@ class ImageCaptureViewController: UIViewController, UIImagePickerControllerDeleg
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let imageToSave : UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
         if let imageData = UIImageJPEGRepresentation(imageToSave, 1.0) {
-            self.photoData = imageData
-            
-            let eventSelectorVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ImageCaptureViewController.EVENT_SELECTOR_STORYBOARD_ID)
-            self.present(eventSelectorVC, animated: true, completion: nil)
+            self.imageData = imageData
+            self.showCamera = false
+            cameraPicker.dismiss(animated: false) {
+                self.performSegue(withIdentifier: ImageCaptureViewController.TO_EVENT_SELECTOR_SEGUE, sender: nil)
+            }
         }
         else {
             print("Could not convert image to jpeg")

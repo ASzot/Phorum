@@ -17,7 +17,8 @@ class StorageHelper {
     }
     
     static func uploadImage(imageData:Data, onUploaded: @escaping (FIRStorageMetadata?, Error?) -> ()) -> () {
-        let imagesRef = StorageHelper.getStorageRef().child(StorageHelper.IMAGE_PATH)
+        let generatedName = UtilityHelper.randomString(length: 8) + ".jpeg"
+        let imagesRef = StorageHelper.getStorageRef().child(StorageHelper.IMAGE_PATH).child(generatedName)
         
         let _ = imagesRef.put(imageData, metadata:nil) { metadata, error in
             onUploaded(metadata, error)

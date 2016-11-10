@@ -19,21 +19,28 @@ class EventSelectorViewController: UIViewController, UITableViewDelegate, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.displayTableView.delegate = self
+        self.displayTableView.dataSource = self
 
         // Load all of the events that a user is a part of.
         SubscribedEventModel().getWhereEquals(key: "user_id", compareValue: self.userId!) { models in
-            let subModels = models as! [SubscribedEventModel]
-            for subModel in subModels {
-                // Get the associated event.
-                EventModel().get(id: subModel.getId()) { model in
-                    let eventModel = model as! EventModel
-                    self.displayEvents.append(eventModel)
-                    
-                    if self.displayEvents.count == subModels.count {
-                        // All ofthe associated events have been fetched.
-                        self.displayTableView.reloadData()
+            if let subModels = models as? [SubscribedEventModel] {
+                for subModel in subModels {
+                    // Get the associated event.
+                    EventModel().get(id: subModel.eventId) { model in
+                        let eventModel = model as! EventModel
+                        self.displayEvents.append(eventModel)
+                        
+                        if self.displayEvents.count == subModels.count {
+                            // All ofthe associated events have been fetched.
+                            self.displayTableView.reloadData()
+                        }
                     }
                 }
+            }
+            else {
+                print("User owns no models")
             }
         }
     }

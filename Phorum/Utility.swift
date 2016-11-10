@@ -10,21 +10,24 @@ import Foundation
 
 class UtilityHelper {
     static let EVENT_CODE_LENGTH = 4
-    static let EVENT_CODE_VALUES = [
-        "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-        "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
-        "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
-    ]
     
-    static func generateEventCode() -> String {
-        var eventCode:String = ""
-        for _ in 1...UtilityHelper.EVENT_CODE_LENGTH {
-            let randomIndex = Int(arc4random_uniform(UInt32(UtilityHelper.EVENT_CODE_VALUES.count)))
-            eventCode += UtilityHelper.EVENT_CODE_VALUES[randomIndex]
+    static func randomString(length: Int) -> String {
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let len = UInt32(letters.length)
+        
+        var randomString = ""
+        
+        for _ in 0 ..< length {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
         }
         
-        print("Event code is")
-        print(eventCode)
+        return randomString
+    }
+    
+    static func generateEventCode() -> String {
+        var eventCode:String = randomString(length: self.EVENT_CODE_LENGTH)
         
         return eventCode
     }
