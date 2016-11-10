@@ -13,9 +13,15 @@ class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var displayTableView: UITableView!
     var allPrivateEvents: [EventModel] = []
     var userId: String? = ""
+    static let CELL_REUSE_IDEN = "EventTableViewCellIden"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let nib = UINib(nibName: "EventTableViewCell", bundle: nil)
+        self.displayTableView.dataSource = self
+        self.displayTableView.delegate = self
+        self.displayTableView.register(nib, forCellReuseIdentifier: PrivateEventsViewController.CELL_REUSE_IDEN)
 
         self.userId = Digits.sharedInstance().session()?.userID
         
@@ -24,8 +30,33 @@ class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITabl
     
     func fetchEvents() {
         // Get all of the events the user is subscribed to.
-        SubscribedEvents().getWhereEquals(key: "user_id", compareValue: self.userId!) { (foundModels) in 
-            
+        SubscribedEventModel().getWhereEquals(key: "user_id", compareValue: self.userId!) { (foundModels) in
+            if let subbedEvents = foundModels as? [SubscribedEventModel] {
+                self.allPrivateEvents = []
+                
+                for subbedEvent in subbedEvents {
+                    let eventId = subbedEvent.eventId
+                    
+                    // Retrieve the associated event.
+                    EventModel().get(id: eventId) { (event) in
+                        if let eventModel = event as? EventModel {
+                            self.allPrivateEvents.append(eventModel)
+                            
+                            // Are all of the events loaded? 
+                            if self.allPrivateEvents.count == subbedEvents.count {
+                                // Reload the table.
+                                self.displayTableView.reloadData()
+                            }
+                        }
+                        else {
+                            
+                        }
+                    }
+                }
+            }
+            else {
+                
+            }
         }
     }
 
@@ -45,6 +76,7 @@ class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITabl
         self.dismiss(animated: true, completion: {});
         
         // Update events.
+        self.fetchEvents()
     }
     
     func onCancel(senderType: Any.Type) {
@@ -56,11 +88,17 @@ class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.allPrivateEvents.count;
+        return self.allPrivateEvents.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell:EventTableViewCell = self.displayTableView.dequeueReusableCell(withIdentifier: PrivateEventsViewController.CELL_REUSE_IDEN) as! EventTableViewCell
+        
+        let privateEvent = self.allPrivateEvents[indexPath.row]
+        
+        cell.eventNameLbl.text = privateEvent.name
+        
+        return cell
     }
 
 }

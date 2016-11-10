@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 
 
-class SubscribedEvents:BaseModel {
+class SubscribedEventModel:BaseModel {
     let keys = [
         "eventId",
         "userId"
@@ -51,7 +51,7 @@ class SubscribedEvents:BaseModel {
     }
     
     override func createSelf() -> BaseModel {
-        let subModel = SubscribedEvents()
+        let subModel = SubscribedEventModel()
         return subModel
     }
     

@@ -12,14 +12,21 @@ import Firebase
 class EventModel:BaseModel {
     let keys = [
         "creator_id",
-        "name"
+        "name",
+        "event_id",
+        "event_code"
     ]
     
     convenience override init() {
-        self.init(name: "", creatorId: "")
+        self.init(name: "", creatorId: "", eventCode:"")
     }
     
-    init(name:String, creatorId:String) {
+    convenience init(name:String, creatorId:String) {
+        let genCode = UtilityHelper.generateEventCode()
+        self.init(name: name, creatorId: creatorId, eventCode: genCode)
+    }
+    
+    init(name:String, creatorId:String, eventCode:String) {
         super.init()
         self.clearModelValues(forKeys:self.keys)
         self.name = name
@@ -41,6 +48,12 @@ class EventModel:BaseModel {
         }
         set(setVal) {
             self.setModelValue(key: "creator_id", setValue: setVal)
+        }
+    }
+    
+    var genCode:String {
+        get {
+            return self.getModelValue(key: "event_code") as! String
         }
     }
     

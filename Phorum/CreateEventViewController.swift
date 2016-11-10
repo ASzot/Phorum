@@ -40,7 +40,7 @@ class CreateEventViewController: UIViewController {
             createEvent.save()
             
             // Also subscribe the user to this event.
-            let subEvent = SubscribedEvents(eventId: createEvent.getId(), userId: self.userId!)
+            let subEvent = SubscribedEventModel(eventId: createEvent.getId(), userId: self.userId!)
             subEvent.save()
             
             // No need to pass any data back as the event is already saved.

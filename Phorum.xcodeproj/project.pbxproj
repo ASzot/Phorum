@@ -16,7 +16,10 @@
 		697075F81DD1E28B00A588F3 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697075F71DD1E28B00A588F3 /* EventModel.swift */; };
 		697768FB1DD2B8B500900185 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697768FA1DD2B8B500900185 /* CreateEventViewController.swift */; };
 		697769001DD2BA0A00900185 /* DefaultResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697768FF1DD2BA0A00900185 /* DefaultResponder.swift */; };
-		697769031DD2E96000900185 /* SubscribedEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697769021DD2E96000900185 /* SubscribedEvents.swift */; };
+		697769031DD2E96000900185 /* SubscribedEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697769021DD2E96000900185 /* SubscribedEventModel.swift */; };
+		697769061DD45E4D00900185 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697769051DD45E4D00900185 /* EventTableViewCell.swift */; };
+		697769081DD45E8000900185 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 697769071DD45E8000900185 /* EventTableViewCell.xib */; };
+		6977690A1DD461D800900185 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697769091DD461D800900185 /* Utility.swift */; };
 		69A936211DD1C1F700CF940C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 69A936201DD1C1F700CF940C /* GoogleService-Info.plist */; };
 		69A936251DD1CAAC00CF940C /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A936241DD1CAAC00CF940C /* CreateAccountViewController.swift */; };
 		69A9362C1DD1D41B00CF940C /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A9362B1DD1D41B00CF940C /* AccountModel.swift */; };
@@ -39,7 +42,10 @@
 		697075F71DD1E28B00A588F3 /* EventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		697768FA1DD2B8B500900185 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		697768FF1DD2BA0A00900185 /* DefaultResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultResponder.swift; sourceTree = "<group>"; };
-		697769021DD2E96000900185 /* SubscribedEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribedEvents.swift; sourceTree = "<group>"; };
+		697769021DD2E96000900185 /* SubscribedEventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribedEventModel.swift; sourceTree = "<group>"; };
+		697769051DD45E4D00900185 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		697769071DD45E8000900185 /* EventTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
+		697769091DD461D800900185 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		69A936201DD1C1F700CF940C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		69A936241DD1CAAC00CF940C /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		69A9362B1DD1D41B00CF940C /* AccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
@@ -112,8 +118,18 @@
 			isa = PBXGroup;
 			children = (
 				697768FF1DD2BA0A00900185 /* DefaultResponder.swift */,
+				697769091DD461D800900185 /* Utility.swift */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		697769041DD45DF800900185 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				697769051DD45E4D00900185 /* EventTableViewCell.swift */,
+				697769071DD45E8000900185 /* EventTableViewCell.xib */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		69A936221DD1C7B700CF940C /* Controller */ = {
@@ -139,6 +155,7 @@
 		69A936271DD1CC2A00CF940C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				697769041DD45DF800900185 /* Cell */,
 				69A9362D1DD1D86100CF940C /* HideKeyboardHelper.swift */,
 			);
 			name = UI;
@@ -150,7 +167,7 @@
 				69A9362B1DD1D41B00CF940C /* AccountModel.swift */,
 				69A9362F1DD1DC9200CF940C /* BaseModel.swift */,
 				697075F71DD1E28B00A588F3 /* EventModel.swift */,
-				697769021DD2E96000900185 /* SubscribedEvents.swift */,
+				697769021DD2E96000900185 /* SubscribedEventModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -247,6 +264,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				697769081DD45E8000900185 /* EventTableViewCell.xib in Resources */,
 				6901C5FD1DD18E52006547F9 /* LaunchScreen.storyboard in Resources */,
 				69A936211DD1C1F700CF940C /* GoogleService-Info.plist in Resources */,
 				6901C5FA1DD18E52006547F9 /* Assets.xcassets in Resources */,
@@ -323,8 +341,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				69A936301DD1DC9200CF940C /* BaseModel.swift in Sources */,
-				697769031DD2E96000900185 /* SubscribedEvents.swift in Sources */,
+				697769031DD2E96000900185 /* SubscribedEventModel.swift in Sources */,
 				69A936251DD1CAAC00CF940C /* CreateAccountViewController.swift in Sources */,
+				697769061DD45E4D00900185 /* EventTableViewCell.swift in Sources */,
 				697769001DD2BA0A00900185 /* DefaultResponder.swift in Sources */,
 				6901C5F51DD18E52006547F9 /* LoginViewController.swift in Sources */,
 				69A936331DD1DFA300CF940C /* PrivateEventsViewController.swift in Sources */,
@@ -333,6 +352,7 @@
 				69A9362E1DD1D86100CF940C /* HideKeyboardHelper.swift in Sources */,
 				6901C5F31DD18E52006547F9 /* AppDelegate.swift in Sources */,
 				697075F81DD1E28B00A588F3 /* EventModel.swift in Sources */,
+				6977690A1DD461D800900185 /* Utility.swift in Sources */,
 				69A9362C1DD1D41B00CF940C /* AccountModel.swift in Sources */,
 				697768FB1DD2B8B500900185 /* CreateEventViewController.swift in Sources */,
 				FFF1EF191DD2E46200803016 /* MainTabsController.swift in Sources */,
