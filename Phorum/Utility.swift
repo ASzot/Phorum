@@ -27,7 +27,7 @@ class UtilityHelper {
     }
     
     static func generateEventCode() -> String {
-        var eventCode:String = randomString(length: self.EVENT_CODE_LENGTH)
+        let eventCode:String = randomString(length: self.EVENT_CODE_LENGTH)
         
         return eventCode
     }
