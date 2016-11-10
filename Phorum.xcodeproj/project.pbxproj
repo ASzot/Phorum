@@ -219,7 +219,7 @@
 				TargetAttributes = {
 					6901C5EE1DD18E52006547F9 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = HUSRZ24RF7;
+						DevelopmentTeam = 572QK6T569;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -457,7 +457,7 @@
 			baseConfigurationReference = 8D83E0C0637F3966DD9F54BD /* Pods-Phorum.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = HUSRZ24RF7;
+				DEVELOPMENT_TEAM = 572QK6T569;
 				INFOPLIST_FILE = Phorum/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -472,7 +472,7 @@
 			baseConfigurationReference = CDA085E0100BD6B50F78290F /* Pods-Phorum.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = HUSRZ24RF7;
+				DEVELOPMENT_TEAM = 572QK6T569;
 				INFOPLIST_FILE = Phorum/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

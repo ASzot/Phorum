@@ -49,7 +49,7 @@ class LoginViewController: UIViewController {
     }
     
     func checkUserExists(userId: String) {
-        AccountModel.get(id: userId) { (userAccount) -> Void in
+        AccountModel().get(id: userId) { (userAccount) -> Void in
             if userAccount == nil {
                 // Navigate to the account creation view.
                 self.loggedInUserId = userId

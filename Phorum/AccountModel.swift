@@ -10,39 +10,46 @@ import Foundation
 import Firebase
 
 class AccountModel:BaseModel {
-    static let TABLE_NAME = "users"
-    var displayName: String
-    var userId: String
+    let keys = [
+        "display"
+    ]
     
-    init(displayName: String, userId: String) {
-        self.displayName = displayName
-        self.userId = userId
+    convenience override init() {
+        self.init(id: "", display: "")
     }
     
-    
-    static func getFirebaseRef() -> FIRDatabaseReference {
-        return FIRDatabase.database().reference(withPath: AccountModel.TABLE_NAME)
+    init(id:String, display:String) {
+        super.init()
+        self.clearModelValues(forKeys:self.keys)
+        self.displayName = display
+        self.id = id
     }
     
-    static func get(id:String, onComplete: @escaping (Any?) -> ()) -> () {
-        ModelHelper.getResults(firebaseRef: AccountModel.getFirebaseRef(), id: id) { (accountData) -> Void in
-            // Convert the object to an AccountModel
-            if let account = accountData {
-                let display = account["display"] as! String
-                onComplete(AccountModel(displayName: display, userId: id))
-            }
-            else {
-                onComplete(nil)
-            }
+    var id:String {
+        get {
+            return self.getModelValue(key: "id") as! String
+        }
+        set(setVal) {
+            self.setModelValue(key: "id", setValue: setVal)
         }
     }
     
-    static func getAll(onComplete: @escaping (Any?) -> ()) -> () {
-        
+    var displayName:String {
+        get {
+            return self.getModelValue(key: "display") as! String
+        }
+        set(setVal) {
+            self.setModelValue(key: "display", setValue: setVal)
+        }
     }
     
-    func save() {
-        let newEle = AccountModel.getFirebaseRef().child(self.userId)
-        newEle.child("display").setValue(self.displayName)
+    
+    override func getTableName() -> String {
+        return "users"
+    }
+    
+    override func createSelf() -> BaseModel {
+        let accountModel = AccountModel()
+        return accountModel
     }
 }

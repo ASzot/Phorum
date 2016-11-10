@@ -10,46 +10,47 @@ import Foundation
 import Firebase
 
 class EventModel:BaseModel {
-    static let TABLE_NAME = "events"
-    var eventName: String
-    var eventId: String
-    var creatorId: String
+    let keys = [
+        "creator_id",
+        "name"
+    ]
     
-    convenience init(eventName: String, creatorId: String) {
-        self.init(eventName: eventName, creatorId: creatorId, eventId: "")
+    convenience override init() {
+        self.init(name: "", creatorId: "")
     }
     
-    init (eventName: String, creatorId: String, eventId: String) {
-        self.eventName = eventName
-        self.eventId = eventId
+    init(name:String, creatorId:String) {
+        super.init()
+        self.clearModelValues(forKeys:self.keys)
+        self.name = name
         self.creatorId = creatorId
     }
     
-    static func getFirebaseRef() -> FIRDatabaseReference {
-        return FIRDatabase.database().reference(withPath: EventModel.TABLE_NAME)
-    }
-    
-    static func get(id:String, onComplete: @escaping (Any?) -> ()) -> () {
-        ModelHelper.getResults(firebaseRef: EventModel.getFirebaseRef(), id: id) { (eventData) -> Void in
-            // Convert the object to an AccountModel
-            if let event = eventData {
-                let name = event["name"] as! String
-                let creatorId = event["creator_id"] as! String
-                onComplete(EventModel(eventName: name, creatorId: creatorId, eventId: id))
-            }
-            else {
-                onComplete(nil)
-            }
+    var name:String {
+        get {
+            return self.getModelValue(key: "name") as! String
+        }
+        set(setVal) {
+            self.setModelValue(key: "name", setValue: setVal)
         }
     }
     
-    static func getAll(onComplete: @escaping (Any?) -> ()) -> () {
-        
+    var creatorId:String {
+        get {
+            return self.getModelValue(key: "creator_id") as! String
+        }
+        set(setVal) {
+            self.setModelValue(key: "creator_id", setValue: setVal)
+        }
     }
     
-    func save() {
-        let newEle = self.eventId == "" ? EventModel.getFirebaseRef().childByAutoId() : EventModel.getFirebaseRef().child(self.eventId)
-        newEle.child("name").setValue(self.eventName)
-        newEle.child("creator_id").setValue(self.creatorId)
+    
+    override func getTableName() -> String {
+        return "events"
+    }
+    
+    override func createSelf() -> BaseModel {
+        let eventModel = EventModel()
+        return eventModel
     }
 }

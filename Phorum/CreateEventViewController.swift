@@ -34,9 +34,14 @@ class CreateEventViewController: UIViewController {
         let validateInputResult = validateInput(eventName: eventName)
         
         if validateInputResult == "Valid" {
-            let createEvent = EventModel(eventName: eventName, creatorId: self.userId!)
+            // Create the event and set the user as the owner of it.
+            let createEvent = EventModel(name: eventName, creatorId: self.userId!)
             // Save the event. 
             createEvent.save()
+            
+            // Also subscribe the user to this event.
+            let subEvent = SubscribedEvents(eventId: createEvent.getId(), userId: self.userId!)
+            subEvent.save()
             
             // No need to pass any data back as the event is already saved.
             self.delegate?.onDone(senderType: CreateEventViewController.self, data: nil)

@@ -18,10 +18,15 @@ class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
 
         self.userId = Digits.sharedInstance().session()?.userID
+        
+        self.fetchEvents()
     }
     
     func fetchEvents() {
-        let userId = Digits.sharedInstance().session()?.userID
+        // Get all of the events the user is subscribed to.
+        SubscribedEvents().getWhereEquals(key: "user_id", compareValue: self.userId!) { (foundModels) in 
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {

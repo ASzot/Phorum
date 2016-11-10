@@ -28,7 +28,7 @@ class CreateAccountViewController: UIViewController {
         let displayName = displayNameTxtField.text!
         assert(self.userId != "", "User id was not set")
         
-        let createdAccount = AccountModel(displayName: displayName, userId: self.userId)
+        let createdAccount = AccountModel(id: self.userId, display: displayName)
         createdAccount.save()
         
         self.performSegue(withIdentifier: CreateAccountViewController.SHOW_MAIN_SEGUE, sender: nil)

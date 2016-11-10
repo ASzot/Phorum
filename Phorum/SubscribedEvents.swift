@@ -11,47 +11,48 @@ import Firebase
 
 
 class SubscribedEvents:BaseModel {
-    static let TABLE_NAME = "subscribedevents"
-    var userId: String
-    var eventId: String
-    var subscriptionId: String
+    let keys = [
+        "eventId",
+        "userId"
+    ]
     
-    convenience init(eventId: String, userId: String) {
-        self.init(eventId: eventId, userId: userId, subscriptionId: "")
+    convenience override init() {
+        self.init(eventId: "", userId: "")
     }
     
-    init (eventId: String, userId: String, subscriptionId: String) {
+    init(eventId:String, userId:String) {
+        super.init()
+        self.clearModelValues(forKeys:self.keys)
         self.eventId = eventId
         self.userId = userId
-        self.subscriptionId = subscriptionId
     }
     
-    static func getFirebaseRef() -> FIRDatabaseReference {
-        return FIRDatabase.database().reference(withPath: SubscribedEvents.TABLE_NAME)
-    }
-    
-    static func get(id:String, onComplete: @escaping (Any?) -> ()) -> () {
-        ModelHelper.getResults(firebaseRef: EventModel.getFirebaseRef(), id: id) { (subData) -> Void in
-            // Convert the object to an AccountModel
-            if let sub = subData {
-                let userId = sub["user_id"] as! String
-                let eventId = sub["event_id"] as! String
-                onComplete(SubscribedEvents(eventId: eventId, userId: userId, subscriptionId: id))
-            }
-            else {
-                onComplete(nil)
-            }
+    var eventId:String {
+        get {
+            return self.getModelValue(key: "eventId") as! String
+        }
+        set(setVal) {
+            self.setModelValue(key: "eventId", setValue: setVal)
         }
     }
     
-    static func getAll(onComplete: @escaping (Any?) -> ()) -> () {
-        
+    var userId:String {
+        get {
+            return self.getModelValue(key: "userId") as! String
+        }
+        set(setVal) {
+            self.setModelValue(key: "userId", setValue: setVal)
+        }
     }
     
-    func save() {
-        let newEle = self.subscriptionId == "" ? SubscribedEvents.getFirebaseRef().childByAutoId() : SubscribedEvents.getFirebaseRef().child(self.subscriptionId)
-        newEle.child("user_id").setValue(self.userId)
-        newEle.child("event_id").setValue(self.eventId)
+    
+    override func getTableName() -> String {
+        return "subscribed_events"
+    }
+    
+    override func createSelf() -> BaseModel {
+        let subModel = SubscribedEvents()
+        return subModel
     }
     
 }
