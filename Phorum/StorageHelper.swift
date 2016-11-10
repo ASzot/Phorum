@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FirebaseStorage
 
 class StorageHelper {
     static let IMAGE_PATH = "images"

@@ -1,19 +1,18 @@
 //
-//  MainTabsController.swift
+//  MySpacesViewController.swift
 //  Phorum
 //
-//  Created by Chaitanya Pilaka on 11/8/16.
+//  Created by Chaitanya Pilaka on 11/10/16.
 //  Copyright © 2016 Scope. All rights reserved.
 //
 
 import UIKit
 
-class MainTabsController: UITabBarController {
+class MySpacesViewController: UIViewController {
 
-    let cameraView =  ImageCaptureViewController()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
 
@@ -21,9 +20,6 @@ class MainTabsController: UITabBarController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-   
-
     
 
     /*
