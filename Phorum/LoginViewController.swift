@@ -57,6 +57,7 @@ class LoginViewController: UIViewController {
             }
             else {
                 // Navigate to the main view.
+                print("Going to main")
                 self.performSegue(withIdentifier: LoginViewController.SHOW_MAIN_SEGUE_ID, sender: nil)
             }
         }

@@ -120,7 +120,7 @@ class BaseModel {
                 onComplete(retModels)
             }
             else {
-                onComplete(nil)
+                onComplete([])
             }
         })
     }

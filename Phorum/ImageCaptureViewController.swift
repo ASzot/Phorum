@@ -23,9 +23,6 @@ class ImageCaptureViewController: UIViewController, UIImagePickerControllerDeleg
         super.viewDidLoad()
         configureCamera()
         self.userId = Digits.sharedInstance().session()?.userID
-        
-        
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,8 +40,6 @@ class ImageCaptureViewController: UIViewController, UIImagePickerControllerDeleg
         print("onCancel")
         self.showCamera = false
         self.dismiss(animated: true, completion: {});
-        //let parentViewController = self.presentingViewController
-        //self.present(parentViewController!, animated: false, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -69,17 +64,13 @@ class ImageCaptureViewController: UIViewController, UIImagePickerControllerDeleg
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if self.showCamera {
-            self.present(cameraPicker, animated: true, completion: nil)
-        }
+        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         cameraPicker.dismiss(animated: true, completion: nil)
         self.tabBarController?.selectedIndex = 0
     }
-    
-    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let imageToSave : UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage

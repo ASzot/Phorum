@@ -17,9 +17,9 @@ class StorageHelper {
         return FIRStorage.storage().reference()
     }
     
-    static func uploadImage(imageData:Data, onUploaded: @escaping (FIRStorageMetadata?, Error?) -> ()) -> () {
+    static func uploadImage(imageData:Data, subFolder:String, onUploaded: @escaping (FIRStorageMetadata?, Error?) -> ()) -> () {
         let generatedName = UtilityHelper.randomString(length: 8) + ".jpeg"
-        let imagesRef = StorageHelper.getStorageRef().child(StorageHelper.IMAGE_PATH).child(generatedName)
+        let imagesRef = StorageHelper.getStorageRef().child(StorageHelper.IMAGE_PATH).child(subFolder).child(generatedName)
         
         let _ = imagesRef.put(imageData, metadata:nil) { metadata, error in
             onUploaded(metadata, error)

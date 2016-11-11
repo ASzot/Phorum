@@ -12,9 +12,11 @@ class EventContentViewController: UIViewController, UICollectionViewDataSource, 
     @IBOutlet weak var photoCollectionView: UICollectionView!
     static let PHOTO_VIEW_CELL_REUSE_ID = "PhotoCollectionViewCell"
     static let EVENT_DETAILS_VC_ID = "EventDetailsVCID"
+    
     var eventModel:EventModel?
     var dispPhotoModels:[PhotoModel] = []
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +27,7 @@ class EventContentViewController: UIViewController, UICollectionViewDataSource, 
     func loadEventData() -> () {
         // Get all of the images associated with this event id.
         let eventId = eventModel?.getId()
+        print("Event id is \(eventId)")
         
         PhotoModel().getWhereEquals(key: "event_id", compareValue: eventId!) { models in
             if let photoModels = models as? [PhotoModel] {
@@ -36,7 +39,7 @@ class EventContentViewController: UIViewController, UICollectionViewDataSource, 
                 }
             }
             else {
-                print("Could not fetch photos")
+                
             }
         }
     }

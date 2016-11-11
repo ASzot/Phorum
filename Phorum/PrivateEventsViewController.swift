@@ -11,6 +11,7 @@ import DigitsKit
 
 class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DefaultResponder  {
     @IBOutlet weak var displayTableView: UITableView!
+    static let EVENT_CONTENT_VC_ID = "EventContentVCID"
     var allPrivateEvents: [EventModel] = []
     var userId: String? = ""
     static let CELL_REUSE_IDEN = "EventTableViewCellIden"
@@ -27,6 +28,16 @@ class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITabl
         self.userId = Digits.sharedInstance().session()?.userID
         
         self.fetchEvents()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     func fetchEvents() {
@@ -80,6 +91,15 @@ class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITabl
         self.fetchEvents()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedEvent = self.allPrivateEvents[indexPath.row]
+        
+        let eventContentVC = self.storyboard!.instantiateViewController(withIdentifier: PrivateEventsViewController.EVENT_CONTENT_VC_ID) as! EventContentViewController
+        eventContentVC.eventModel = selectedEvent
+        
+        self.navigationController!.pushViewController(eventContentVC, animated: true)
+    }
+    
     func onCancel(senderType: Any.Type) {
         self.dismiss(animated: true, completion: {});
     }
@@ -98,6 +118,7 @@ class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITabl
         let privateEvent = self.allPrivateEvents[indexPath.row]
         
         cell.eventNameLbl.text = privateEvent.name
+        cell.selectionStyle = .none
         
         return cell
     }

@@ -2,115 +2,138 @@
 //  CameraViewController.swift
 //  Phorum
 //
-//  Created by Chaitanya Pilaka on 11/8/16.
+//  Created by Andrew Szot on 11/10/16.
 //  Copyright © 2016 Scope. All rights reserved.
 //
 
 import UIKit
+import Foundation
 import AVFoundation
+import DigitsKit
 
-class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
-    
-    let captureSession = AVCaptureSession()
-    var captureInput: AVCaptureDevice?
-    var captureOutput: AVCapturePhotoOutput?
-    
-    
-    
-    @IBOutlet weak var capturedImage: UIImageView!
+class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate, DefaultResponder {
     @IBOutlet weak var previewView: UIView!
+    @IBOutlet weak var checkImageView: UIImageView!
+    @IBOutlet weak var takeBtn: UIButton!
+    @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var cancelBtn: UIButton!
     
+    
+    static let TO_EVENT_SELECTOR_SEGUE = "CameraVCToEventSelectorID"
+    
+    var captureSession: AVCaptureSession = AVCaptureSession()
+    var sessionOutput: AVCapturePhotoOutput = AVCapturePhotoOutput()
+    var previewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer()
+    
+    var imageData:Data?
+    var userId:String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.userId = Digits.sharedInstance().session()?.userID
         
-        
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-
-        // Dispose of any resources that can be recreated.
-        
+        takeBtn.layer.zPosition = 1000
+        previewView.layer.zPosition = 0
+        hideImageCheck()
     }
     
-    func defaultCamera() -> AVCaptureDevice?{
-        if let device = AVCaptureDevice.defaultDevice(withDeviceType: .builtInWideAngleCamera, mediaType: AVMediaTypeVideo, position: .back) {
-            return device
-            
-        }else{
-            return nil
+    func hideImageCheck() {
+        checkImageView.isHidden = true
+        takeBtn.isHidden = false
+        nextBtn.isHidden = true
+        cancelBtn.isHidden = true
+        previewView.isHidden = false
+    }
+    
+    func showImageCheck() {
+        checkImageView.isHidden = false
+        takeBtn.isHidden = true
+        nextBtn.isHidden = false
+        cancelBtn.isHidden = false
+        previewView.isHidden = true
+    }
+    
+    func onDone(senderType: Any.Type, data: Any?) {
+        self.dismiss(animated: true, completion: {})
+    }
+    
+    func onCancel(senderType: Any.Type) {
+        self.dismiss(animated: true, completion: {})
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let eventSelectorVC = segue.destination as? EventSelectorViewController {
+            print("Seguing")
+            eventSelectorVC.delegate = self
+            eventSelectorVC.userId = self.userId
+            eventSelectorVC.imageData = self.imageData
         }
     }
     
-    func configureInput(){
-        
-        captureInput = defaultCamera()
-        do{
-            let cameraInput = try AVCaptureDeviceInput(device: captureInput)
-            captureSession.addInput(cameraInput)
-        }catch{
-            print("Camera not working")
-        }
-    }
-    
-    func configureOutput(){
-        captureOutput = AVCapturePhotoOutput()
-        
-        //let photoFormat = [AVVideoCodecKey as String: AVVideoCodecJPEG]
-        //let photoSettings = AVCapturePhotoSettings(format: photoFormat)
-        //captureOutput?.capturePhoto(with: photoSettings, delegate: self)
-        
-        captureSession.addOutput(captureOutput)
-        captureSession.sessionPreset = AVCaptureSessionPresetPhoto
-        
-    }
-    
-    func capture(_ captureOutput: AVCapturePhotoOutput,
-                          didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?,
-                          previewPhotoSampleBuffer: CMSampleBuffer?,
-                          resolvedSettings: AVCaptureResolvedPhotoSettings,
-                          bracketSettings: AVCaptureBracketedStillImageSettings?,
-                          error: Error?){
-        
+    func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
         if let error = error {
             print(error.localizedDescription)
         }
         
-        
+        if let sampleBuffer = photoSampleBuffer {
+            print("ATTEMPOTNG")
+            let dataImage = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: sampleBuffer, previewPhotoSampleBuffer: nil)
+            print("UPLOADED")
+            self.imageData = dataImage
+            self.checkImageView.image = UIImage(data: dataImage!)
+            self.showImageCheck()
+        }
+        else {
+            print("NOT SET")
+        }
     }
     
-
-
     override func viewWillAppear(_ animated: Bool) {
-        
-        configureInput()
-        configureOutput()
-        
-        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer!.frame = previewView.bounds
-        previewView.layer.addSublayer(previewLayer!)
-        
-        captureSession.startRunning()
-        
-        
-      
-        
-       
-        
-     
+        let deviceDiscoverySession = AVCaptureDeviceDiscoverySession(deviceTypes: [AVCaptureDeviceType.builtInDuoCamera, AVCaptureDeviceType.builtInTelephotoCamera,AVCaptureDeviceType.builtInWideAngleCamera], mediaType: AVMediaTypeVideo, position: AVCaptureDevicePosition.unspecified)
+        for device in (deviceDiscoverySession?.devices)! {
+            if(device.position == AVCaptureDevicePosition.back){
+                do {
+                    let input = try AVCaptureDeviceInput(device: device)
+                    if(captureSession.canAddInput(input)){
+                        captureSession.addInput(input);
+                        
+                        if(captureSession.canAddOutput(sessionOutput)){
+                            captureSession.addOutput(sessionOutput);
+                            previewLayer = AVCaptureVideoPreviewLayer(session: captureSession);
+                            previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+                            previewLayer.connection.videoOrientation = AVCaptureVideoOrientation.portrait;
+                            previewView.layer.addSublayer(previewLayer);
+                            captureSession.startRunning()
+                        }
+                    }
+                }
+                catch {
+                    print("Could not initalize camera!");
+                }
+            }
+        }
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        previewLayer.frame = previewView.bounds
+    }
+    
+    @IBAction func onNextBtn(_ sender: Any) {
+        performSegue(withIdentifier: CameraViewController.TO_EVENT_SELECTOR_SEGUE, sender: nil)
     }
     
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func onCancelBtn(_ sender: Any) {
+        self.hideImageCheck()
     }
-    */
-
+    
+    @IBAction func onTakePhoto(_ sender: Any) {
+        let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey:AVVideoCodecJPEG])
+        self.sessionOutput.capturePhoto(with: settings, delegate: self)
+    }
 }

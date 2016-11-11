@@ -27,6 +27,8 @@
 		6977691B1DD4F71800900185 /* EventContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6977691A1DD4F71800900185 /* EventContentCollectionViewCell.swift */; };
 		6977691D1DD50D2100900185 /* ImageViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6977691C1DD50D2100900185 /* ImageViewHelper.swift */; };
 		6977691F1DD511CA00900185 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6977691E1DD511CA00900185 /* EventDetailsViewController.swift */; };
+		697769211DD5503200900185 /* MainPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697769201DD5503200900185 /* MainPagerViewController.swift */; };
+		697769231DD5574700900185 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697769221DD5574700900185 /* CameraViewController.swift */; };
 		69A936211DD1C1F700CF940C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 69A936201DD1C1F700CF940C /* GoogleService-Info.plist */; };
 		69A936251DD1CAAC00CF940C /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A936241DD1CAAC00CF940C /* CreateAccountViewController.swift */; };
 		69A9362C1DD1D41B00CF940C /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A9362B1DD1D41B00CF940C /* AccountModel.swift */; };
@@ -34,12 +36,7 @@
 		69A936301DD1DC9200CF940C /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A9362F1DD1DC9200CF940C /* BaseModel.swift */; };
 		69A936331DD1DFA300CF940C /* PrivateEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A936321DD1DFA300CF940C /* PrivateEventsViewController.swift */; };
 		FF8315361DD358F7003EFDC1 /* ImageCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8315351DD358F7003EFDC1 /* ImageCaptureViewController.swift */; };
-		FF8315381DD4AA63003EFDC1 /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8315371DD4AA63003EFDC1 /* CaptureViewController.swift */; };
-		FF83153A1DD4AD4A003EFDC1 /* MySpacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8315391DD4AD4A003EFDC1 /* MySpacesViewController.swift */; };
-		FF83153C1DD4AD76003EFDC1 /* PublicSpacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF83153B1DD4AD76003EFDC1 /* PublicSpacesViewController.swift */; };
 		FF83153F1DD4AFD9003EFDC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF83153D1DD4AFD9003EFDC1 /* Main.storyboard */; };
-		FFF1EF191DD2E46200803016 /* MainTabsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1EF181DD2E46200803016 /* MainTabsController.swift */; };
-		FFF1EF1C1DD2E66100803016 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF1EF1B1DD2E66100803016 /* CameraViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +61,8 @@
 		6977691A1DD4F71800900185 /* EventContentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventContentCollectionViewCell.swift; sourceTree = "<group>"; };
 		6977691C1DD50D2100900185 /* ImageViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewHelper.swift; sourceTree = "<group>"; };
 		6977691E1DD511CA00900185 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
+		697769201DD5503200900185 /* MainPagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPagerViewController.swift; sourceTree = "<group>"; };
+		697769221DD5574700900185 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		69A936201DD1C1F700CF940C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		69A936241DD1CAAC00CF940C /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		69A9362B1DD1D41B00CF940C /* AccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
@@ -74,12 +73,7 @@
 		8D83E0C0637F3966DD9F54BD /* Pods-Phorum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Phorum.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Phorum/Pods-Phorum.debug.xcconfig"; sourceTree = "<group>"; };
 		CDA085E0100BD6B50F78290F /* Pods-Phorum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Phorum.release.xcconfig"; path = "Pods/Target Support Files/Pods-Phorum/Pods-Phorum.release.xcconfig"; sourceTree = "<group>"; };
 		FF8315351DD358F7003EFDC1 /* ImageCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCaptureViewController.swift; sourceTree = "<group>"; };
-		FF8315371DD4AA63003EFDC1 /* CaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
-		FF8315391DD4AD4A003EFDC1 /* MySpacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySpacesViewController.swift; sourceTree = "<group>"; };
-		FF83153B1DD4AD76003EFDC1 /* PublicSpacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicSpacesViewController.swift; sourceTree = "<group>"; };
 		FF83153E1DD4AFD9003EFDC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FFF1EF181DD2E46200803016 /* MainTabsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabsController.swift; sourceTree = "<group>"; };
-		FFF1EF1B1DD2E66100803016 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,9 +122,6 @@
 				69A936221DD1C7B700CF940C /* Controller */,
 				6901C5F21DD18E52006547F9 /* AppDelegate.swift */,
 				FF83153D1DD4AFD9003EFDC1 /* Main.storyboard */,
-				FF83153B1DD4AD76003EFDC1 /* PublicSpacesViewController.swift */,
-				FF8315391DD4AD4A003EFDC1 /* MySpacesViewController.swift */,
-				FF8315371DD4AA63003EFDC1 /* CaptureViewController.swift */,
 				6901C5F91DD18E52006547F9 /* Assets.xcassets */,
 				6901C5FB1DD18E52006547F9 /* LaunchScreen.storyboard */,
 				6901C5FE1DD18E52006547F9 /* Info.plist */,
@@ -235,8 +226,8 @@
 			isa = PBXGroup;
 			children = (
 				FF8315351DD358F7003EFDC1 /* ImageCaptureViewController.swift */,
-				FFF1EF181DD2E46200803016 /* MainTabsController.swift */,
-				FFF1EF1B1DD2E66100803016 /* CameraViewController.swift */,
+				697769201DD5503200900185 /* MainPagerViewController.swift */,
+				697769221DD5574700900185 /* CameraViewController.swift */,
 			);
 			name = MainController;
 			sourceTree = "<group>";
@@ -382,20 +373,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				69A936301DD1DC9200CF940C /* BaseModel.swift in Sources */,
-				FF83153A1DD4AD4A003EFDC1 /* MySpacesViewController.swift in Sources */,
 				697769031DD2E96000900185 /* SubscribedEventModel.swift in Sources */,
 				69A936251DD1CAAC00CF940C /* CreateAccountViewController.swift in Sources */,
 				6977691D1DD50D2100900185 /* ImageViewHelper.swift in Sources */,
 				697769061DD45E4D00900185 /* EventTableViewCell.swift in Sources */,
+				697769231DD5574700900185 /* CameraViewController.swift in Sources */,
 				6977690F1DD46F5F00900185 /* EventSelectorViewController.swift in Sources */,
 				6977691B1DD4F71800900185 /* EventContentCollectionViewCell.swift in Sources */,
 				697769171DD4F54700900185 /* EventContentViewController.swift in Sources */,
 				697769001DD2BA0A00900185 /* DefaultResponder.swift in Sources */,
 				697769131DD46FE200900185 /* EventSelectTableViewCell.swift in Sources */,
 				6901C5F51DD18E52006547F9 /* LoginViewController.swift in Sources */,
-				FF83153C1DD4AD76003EFDC1 /* PublicSpacesViewController.swift in Sources */,
+				697769211DD5503200900185 /* MainPagerViewController.swift in Sources */,
 				69A936331DD1DFA300CF940C /* PrivateEventsViewController.swift in Sources */,
-				FFF1EF1C1DD2E66100803016 /* CameraViewController.swift in Sources */,
 				6977691F1DD511CA00900185 /* EventDetailsViewController.swift in Sources */,
 				FF8315361DD358F7003EFDC1 /* ImageCaptureViewController.swift in Sources */,
 				69A9362E1DD1D86100CF940C /* HideKeyboardHelper.swift in Sources */,
@@ -403,11 +393,9 @@
 				697075F81DD1E28B00A588F3 /* EventModel.swift in Sources */,
 				6977690A1DD461D800900185 /* Utility.swift in Sources */,
 				69A9362C1DD1D41B00CF940C /* AccountModel.swift in Sources */,
-				FF8315381DD4AA63003EFDC1 /* CaptureViewController.swift in Sources */,
 				697768FB1DD2B8B500900185 /* CreateEventViewController.swift in Sources */,
 				6977690D1DD46C6B00900185 /* StorageHelper.swift in Sources */,
 				697769151DD4735C00900185 /* PhotoModel.swift in Sources */,
-				FFF1EF191DD2E46200803016 /* MainTabsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

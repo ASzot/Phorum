@@ -79,7 +79,7 @@ class EventSelectorViewController: UIViewController, UITableViewDelegate, UITabl
         if self.selectedIndex != -1 {
             let selectedEvent = self.displayEvents[self.selectedIndex]
             // Upload the image data for this event.
-            StorageHelper.uploadImage(imageData:self.imageData!) { metadata, error in
+            StorageHelper.uploadImage(imageData:self.imageData!, subFolder:selectedEvent.getId()) { metadata, error in
                 if error == nil {
                     let downloadURL = metadata!.downloadURL()!.absoluteString
                     let eventId = selectedEvent.getId()
