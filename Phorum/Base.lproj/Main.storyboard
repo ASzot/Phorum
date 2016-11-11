@@ -557,7 +557,7 @@
         <!--Main Pager View Controller-->
         <scene sceneID="JbA-Ni-6Sq">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="eBz-xb-rzE" customClass="MainPagerViewController" customModule="Phorum" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="eBz-xb-rzE" customClass="MainPagerViewController" customModule="Phorum" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XgM-sG-Pzc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3246" y="-117"/>
