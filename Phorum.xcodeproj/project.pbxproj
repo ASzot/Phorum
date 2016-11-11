@@ -35,6 +35,7 @@
 		69A9362E1DD1D86100CF940C /* HideKeyboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A9362D1DD1D86100CF940C /* HideKeyboardHelper.swift */; };
 		69A936301DD1DC9200CF940C /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A9362F1DD1DC9200CF940C /* BaseModel.swift */; };
 		69A936331DD1DFA300CF940C /* PrivateEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A936321DD1DFA300CF940C /* PrivateEventsViewController.swift */; };
+		69E212A31DD6515C00BF6A73 /* EventJoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E212A21DD6515C00BF6A73 /* EventJoinViewController.swift */; };
 		FF8315361DD358F7003EFDC1 /* ImageCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8315351DD358F7003EFDC1 /* ImageCaptureViewController.swift */; };
 		FF83153F1DD4AFD9003EFDC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF83153D1DD4AFD9003EFDC1 /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -69,6 +70,7 @@
 		69A9362D1DD1D86100CF940C /* HideKeyboardHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HideKeyboardHelper.swift; sourceTree = "<group>"; };
 		69A9362F1DD1DC9200CF940C /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		69A936321DD1DFA300CF940C /* PrivateEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateEventsViewController.swift; sourceTree = "<group>"; };
+		69E212A21DD6515C00BF6A73 /* EventJoinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventJoinViewController.swift; sourceTree = "<group>"; };
 		7A06D6A4D889584BCB7B1ADD /* Pods_Phorum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Phorum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D83E0C0637F3966DD9F54BD /* Pods-Phorum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Phorum.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Phorum/Pods-Phorum.debug.xcconfig"; sourceTree = "<group>"; };
 		CDA085E0100BD6B50F78290F /* Pods-Phorum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Phorum.release.xcconfig"; path = "Pods/Target Support Files/Pods-Phorum/Pods-Phorum.release.xcconfig"; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				6977690E1DD46F5F00900185 /* EventSelectorViewController.swift */,
 				697769161DD4F54700900185 /* EventContentViewController.swift */,
 				6977691E1DD511CA00900185 /* EventDetailsViewController.swift */,
+				69E212A21DD6515C00BF6A73 /* EventJoinViewController.swift */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				697768FB1DD2B8B500900185 /* CreateEventViewController.swift in Sources */,
 				6977690D1DD46C6B00900185 /* StorageHelper.swift in Sources */,
 				697769151DD4735C00900185 /* PhotoModel.swift in Sources */,
+				69E212A31DD6515C00BF6A73 /* EventJoinViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

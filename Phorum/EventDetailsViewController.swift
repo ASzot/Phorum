@@ -10,11 +10,12 @@ import UIKit
 
 class EventDetailsViewController: UIViewController {
     @IBOutlet weak var dispImageView: UIImageView!
+    var setImage:UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        dispImageView.image = setImage
     }
 
     override func didReceiveMemoryWarning() {

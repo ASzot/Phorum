@@ -27,7 +27,6 @@ class EventContentViewController: UIViewController, UICollectionViewDataSource, 
     func loadEventData() -> () {
         // Get all of the images associated with this event id.
         let eventId = eventModel?.getId()
-        print("Event id is \(eventId)")
         
         PhotoModel().getWhereEquals(key: "event_id", compareValue: eventId!) { models in
             if let photoModels = models as? [PhotoModel] {
@@ -46,9 +45,17 @@ class EventContentViewController: UIViewController, UICollectionViewDataSource, 
     
     func onEventContentTapped(photoId: String, cell:EventContentCollectionViewCell) -> (){
         // Navigate to the view controller displaying the details of this image.
-        let eventDetailsVC = self.storyboard!.instantiateViewController(withIdentifier: EventContentViewController.EVENT_DETAILS_VC_ID) as! EventDetailsViewController
-        eventDetailsVC.dispImageView.image = cell.photoView.image
-        self.navigationController!.pushViewController(eventDetailsVC, animated: true)
+        if let eventDetailsVC = self.storyboard!.instantiateViewController(withIdentifier: EventContentViewController.EVENT_DETAILS_VC_ID) as? EventDetailsViewController {
+            
+            let cgImageData:CGImage = cell.photoView.image!.cgImage!
+            let newCgIm:CGImage = cgImageData.copy()!
+            
+            eventDetailsVC.setImage = UIImage(cgImage: newCgIm, scale: cell.photoView.image!.scale, orientation: cell.photoView.image!.imageOrientation)
+            self.navigationController!.pushViewController(eventDetailsVC, animated: true)
+        }
+        else {
+            print("Could not find VC.")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,6 +74,7 @@ class EventContentViewController: UIViewController, UICollectionViewDataSource, 
         
         cell.photoView.downloadedFrom(link:dispPhotoModel.url)
         cell.photoId = dispPhotoModel.getId()
+        cell.delegate = self
         
         return cell
     }

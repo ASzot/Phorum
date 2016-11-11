@@ -30,16 +30,6 @@ class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITabl
         self.fetchEvents()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        // Hide the navigation bar on the this view controller
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-    }
-    
     func fetchEvents() {
         // Get all of the events the user is subscribed to.
         SubscribedEventModel().getWhereEquals(key: "user_id", compareValue: self.userId!) { (foundModels) in
@@ -81,6 +71,10 @@ class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITabl
         if let createEventVC = segue.destination as? CreateEventViewController {
             createEventVC.delegate = self
             createEventVC.userId = self.userId
+        }
+        else if let eventJoinVC = segue.destination as? EventJoinViewController {
+            eventJoinVC.delegate = self
+            eventJoinVC.userId = self.userId
         }
     }
     
