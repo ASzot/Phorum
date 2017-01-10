@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateEventViewController: UIViewController {
+class CreateEventViewController: UIViewController, UITextFieldDelegate {
     var delegate:DefaultResponder? = nil
     var userId: String? = ""
     @IBOutlet weak var eventNameTxtField: UITextField!
@@ -22,6 +22,12 @@ class CreateEventViewController: UIViewController {
         
         self.hideKeyboardWhenTappedAround()
         self.setErrorMsg(errorTxt: "")
+        self.eventNameTxtField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 
     override func didReceiveMemoryWarning() {

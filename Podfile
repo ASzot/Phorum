@@ -11,4 +11,5 @@ target 'Phorum' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'SwiftSpinner'
 end

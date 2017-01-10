@@ -18,7 +18,17 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
+        print("View appeared")
+        
+        self.loadUser()
+    }
+    
+    func loadUser() {
         let digits = Digits.sharedInstance()
         if let session = digits.session() {
             print("The user id is " + session.userID)
@@ -58,6 +68,7 @@ class LoginViewController: UIViewController {
             else {
                 // Navigate to the main view.
                 print("Going to main")
+                print(userAccount)
                 self.performSegue(withIdentifier: LoginViewController.SHOW_MAIN_SEGUE_ID, sender: nil)
             }
         }
