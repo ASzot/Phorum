@@ -28,6 +28,10 @@ class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITabl
 
         self.userId = Digits.sharedInstance().session()?.userID
         
+        self.navigationController?.navigationBar.barTintColor = UIColor(red:0.20, green:0.60, blue:0.86, alpha:1.0)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.tintColor = UIColor.white;
+        
         self.fetchEvents()
     }
     

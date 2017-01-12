@@ -19,24 +19,67 @@ class EventContentViewController: UIViewController, UICollectionViewDataSource, 
     var eventModel:EventModel?
     var dispPhotoModels:[PhotoModel] = []
     var userId: String?
+    var mainUIBlur: UIVisualEffectView?
 
+    @IBOutlet weak var eventCodeTxtLbl: UILabel!
+    @IBOutlet weak var eventCodeDispView: UIView!
+    @IBOutlet weak var controlsView: UIView!
+    @IBOutlet weak var mainUIView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "anywhereTapped")
+        view.addGestureRecognizer(tap)
+        self.eventCodeTxtLbl.text = self.eventModel!.eventCode
 
         photoCollectionView.dataSource = self
         self.title = eventModel?.name
         self.userId = Digits.sharedInstance().session()?.userID
+        self.eventCodeDispView.isHidden = true
         
         if eventModel!.creatorId == userId {
             self.ownershipTxtLbl.text = "Group Owner"
         }
     }
     
+    func anywhereTapped() {
+        if !self.eventCodeDispView.isHidden {
+            self.eventCodeDispView.isHidden = true
+            self.unblurRestOfUI()
+        }
+    }
+    
+    func blurRestOfUI() {
+        if self.mainUIBlur == nil {
+            self.mainUIBlur = getBlurView(targetView: mainUIView)
+        }
+        self.mainUIView.addSubview(self.mainUIBlur!)
+    }
+    
+    func unblurRestOfUI() {
+        self.mainUIBlur!.removeFromSuperview()
+    }
+    
+    func getBlurView(targetView: UIView) -> UIVisualEffectView {
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = targetView.bounds
+        
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
+        
+        return blurEffectView
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         SwiftSpinner.show("Loading")
         self.loadEventData()
         SwiftSpinner.hide()
+    }
+    
+    @IBAction func getEventCode(_ sender: Any) {
+        self.eventCodeDispView.isHidden = false
+        blurRestOfUI()
     }
     
     func loadEventData() -> () {
