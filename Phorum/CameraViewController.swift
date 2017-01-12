@@ -17,6 +17,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate, Def
     @IBOutlet weak var takeBtn: UIButton!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var controlsView: UIView!
     
     
     static let TO_EVENT_SELECTOR_SEGUE = "CameraVCToEventSelectorID"
@@ -40,16 +41,14 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate, Def
     func hideImageCheck() {
         checkImageView.isHidden = true
         takeBtn.isHidden = false
-        nextBtn.isHidden = true
-        cancelBtn.isHidden = true
+        controlsView.isHidden = true
         previewView.isHidden = false
     }
     
     func showImageCheck() {
         checkImageView.isHidden = false
         takeBtn.isHidden = true
-        nextBtn.isHidden = false
-        cancelBtn.isHidden = false
+        controlsView.isHidden = false
         previewView.isHidden = true
     }
     

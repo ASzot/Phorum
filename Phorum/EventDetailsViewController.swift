@@ -11,13 +11,18 @@ import UIKit
 class EventDetailsViewController: UIViewController {
     @IBOutlet weak var dispImageView: UIImageView!
     var setImage:UIImage?
+    var mainUIBlur: UIVisualEffectView?
 
-    @IBOutlet weak var checkImage: UIImageView!
+    @IBOutlet weak var mainUIView: UIView!
+    @IBOutlet weak var savedDispView: UIView!
+    @IBOutlet weak var downloadBtnBkgView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         dispImageView.image = setImage
-        checkImage.isHidden = true
+        savedDispView.isHidden = true
+        downloadBtnBkgView.layer.cornerRadius = 10.0
+        downloadBtnBkgView.clipsToBounds = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,11 +32,25 @@ class EventDetailsViewController: UIViewController {
 
     @IBAction func onSaveImage(_ sender: Any) {
         UIImageWriteToSavedPhotosAlbum(self.setImage!, nil, nil, nil);
-        checkImage.isHidden = false
-        let _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.hideCheckImage), userInfo: nil, repeats: false);
+        savedDispView.isHidden = false
+        blurRestOfUI()
+        let _ = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.hideCheckImage), userInfo: nil, repeats: false);
+    }
+    
+    func blurRestOfUI() {
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        self.mainUIBlur = UIVisualEffectView(effect: blurEffect)
+        self.mainUIBlur!.frame = mainUIView.bounds
+        
+        mainUIView.addSubview(self.mainUIBlur!)
+    }
+    
+    func unblurRestOfUI() {
+        self.mainUIBlur?.removeFromSuperview()
     }
     
     func hideCheckImage() {
-        checkImage.isHidden = true
+        unblurRestOfUI()
+        savedDispView.isHidden = true
     }
 }

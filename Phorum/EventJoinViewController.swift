@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EventJoinViewController: UIViewController {
+class EventJoinViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var eventCodeTxtBox: UITextField!
     @IBOutlet weak var errorMsgLbl: UILabel!
     var delegate:DefaultResponder?
@@ -18,10 +18,17 @@ class EventJoinViewController: UIViewController {
         super.viewDidLoad()
         
         self.errorMsgLbl.text = ""
+        self.hideKeyboardWhenTappedAround()
+        self.eventCodeTxtBox.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 
     @IBAction func onJoinBtn(_ sender: Any) {
