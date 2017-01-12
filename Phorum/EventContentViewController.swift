@@ -7,21 +7,36 @@
 //
 
 import UIKit
+import SwiftSpinner
+import DigitsKit
 
 class EventContentViewController: UIViewController, UICollectionViewDataSource, EventContentTappedResponder {
     @IBOutlet weak var photoCollectionView: UICollectionView!
     static let PHOTO_VIEW_CELL_REUSE_ID = "PhotoCollectionViewCell"
     static let EVENT_DETAILS_VC_ID = "EventDetailsVCID"
     
+    @IBOutlet weak var ownershipTxtLbl: UILabel!
     var eventModel:EventModel?
     var dispPhotoModels:[PhotoModel] = []
+    var userId: String?
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         photoCollectionView.dataSource = self
+        self.title = eventModel?.name
+        self.userId = Digits.sharedInstance().session()?.userID
+        
+        if eventModel!.creatorId == userId {
+            self.ownershipTxtLbl.text = "Group Owner"
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        SwiftSpinner.show("Loading")
         self.loadEventData()
+        SwiftSpinner.hide()
     }
     
     func loadEventData() -> () {

@@ -9,6 +9,7 @@
 import UIKit
 import DigitsKit
 import Firebase
+import SwiftSpinner
 
 class LoginViewController: UIViewController {
     static let SHOW_MAIN_SEGUE_ID = "ModalShowMain"
@@ -23,7 +24,7 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        print("View appeared")
+        SwiftSpinner.show("Loading")
         
         self.loadUser()
     }
@@ -60,6 +61,7 @@ class LoginViewController: UIViewController {
     
     func checkUserExists(userId: String) {
         AccountModel().get(id: userId) { (userAccount) -> Void in
+            SwiftSpinner.hide()
             if userAccount == nil {
                 // Navigate to the account creation view.
                 self.loggedInUserId = userId

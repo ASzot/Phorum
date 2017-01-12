@@ -2,6 +2,7 @@
 # platform :ios, '9.0'
 
 target 'Phorum' do
+  source 'https://github.com/CocoaPods/Specs.git'
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
@@ -12,4 +13,5 @@ target 'Phorum' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'SwiftSpinner'
+  pod 'SwiftyGif'
 end

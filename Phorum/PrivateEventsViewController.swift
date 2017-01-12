@@ -8,6 +8,7 @@
 
 import UIKit
 import DigitsKit
+import SwiftSpinner
 
 class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DefaultResponder  {
     @IBOutlet weak var displayTableView: UITableView!
@@ -31,8 +32,11 @@ class PrivateEventsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func fetchEvents() {
+        
+        SwiftSpinner.show("Loading")
         // Get all of the events the user is subscribed to.
         SubscribedEventModel().getWhereEquals(key: "user_id", compareValue: self.userId!) { (foundModels) in
+            SwiftSpinner.hide()
             if let subbedEvents = foundModels as? [SubscribedEventModel] {
                 self.allPrivateEvents = []
                 
