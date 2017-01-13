@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Configuring")
         FIRApp.configure()
         Fabric.with([Digits.self])
+
         return true
     }
 
